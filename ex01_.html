@@ -4,22 +4,25 @@
     <meta charset='utf-8'>
     <title>동물 소리</title>
     <script>
-    window.onload = function(){
-        const animal = "dog";
+
+        window.onload = function(){
+            on_animals("dog");
+        }
+
+        const on_animals = (animal)=>{
         const soundsTag = document.getElementById("sounds");
-        if(soundsTag.onclick){
             if(animal == "dog"){
                 soundsTag.innerHTML = "멍멍!";
                 // 해당 요소의 HTML값 변경
             }else if(animal == "cat"){
-                window.onload = "야옹~";
+                soundsTag.innerHTML = "야옹!";
             }else if(animal == "duck"){
                 soundsTag.innerHTML = "꽥꽥!";
             }else{
                 soundsTag.innerHTML = "몰라요";
             }
         }
-    }
+
 
     </script>
 </head>
