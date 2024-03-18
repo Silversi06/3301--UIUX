@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노래 추가</title>
+</head>
+<body>
+
+    <script>
+        //페이지 로딩 후 실행할 수 있도록
+        window.onload = init;
+
+        function init() {
+            //곡 추가버튼
+            var button1 = document.getElementById("addButton");
+            button1.onclick = handleAddButtonClick;
+
+            //곡 삭제버튼
+            var button2 = document.getElementById("deleteButton");
+            button2.onclick = function (e) {
+                removeAll();
+            }
+
+            //저장되어있는 곡 불러옴 : localStorage
+            loadPlaylist();
+        }
+
+        function handleAddButtonClick(e) {
+            var songName = document.getElementById("songTextInput").value;
+
+            if (songName == "") {
+                alert("곡명을 입력하세요");
+            } else {
+                //localStorage에 넣기
+                var playlistArray = getStoreArray("playlist");
+                playlistArray.push(songName);
+                localStorage.setItem("playlist", JSON.stringify(playlistArray));
+
+                //노래 리스트에도 추가
+                var ul = document.getElementById("playlist");
+                var li = document.createElement("li");
+                li.innerHTML = songName;
+                ul.appendChild(li);
+            }
+        }
+
+        function loadPlaylist() {
+
+        }
+
+        function getStoreArray() {
+            var playlistArray = new Array();
+            return playlistArray;
+        }
+    </script>
+
+    <form>
+        <input type="text" id="songTextInput" size="40" placeholder="노래 제목">
+        <input type="button" id="addButton" value="곡 추가">
+        <input type="button" id="deleteButton" value="곡 삭제">
+    </form>
+
+    <ul id="playlist">
+
+    </ul>
+    
+</body>
+</html>

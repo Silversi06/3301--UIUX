@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "song_list"></div>
+    <input type = "button" onclick="search_event()" value="검색"/>
+
+    <script>
+        const songs = [
+            "Be There For me - NCT127",
+            "Fact Check - NCT127",
+            "후유증(Can we go back) - NCT 도재정",
+            "Forever Only - Jaehyun",
+            "Love or Die - TNX"
+        ];
+
+        //노래 배열 내용 출력
+        const songListElement = document.getElementById("song_list");
+        songListElement.innerHTML = "";
+        for(let i = 0; i < songs.length; i++){
+            songListElement.innerHTML += songs[i] + "<br>";
+        }
+        songListElement.innerHTML += "<br>추천 곡 : " + suggestSong();
+
+        function suggestSong() {
+            var randomSong = Math.floor(Math.random() * songs.length);
+
+            return songs[randomSong];
+        }
+
+        //곡 검색
+        function searchForSong(word){
+            word = word.toUpperCase();//대문자로 변경
+            let song;
+            for(let i = 0; i  < songs.length; i++){
+                song = songs[i].toUpperCase();
+                if(song.indexOf(word) >= 0){
+                    return song;
+                }
+            }            
+            return "없는 곡입니다.";
+        }
+
+        function search_event(word){
+            const search_data = prompt("검색할 곡의 이름을 입력해주세요.");
+            const matchedSong = searchForSong(search_data);
+            alert(`검색 결과 : ${matchedSong}`);
+            
+        }
+
+    </script>
+</body>
+</html>
