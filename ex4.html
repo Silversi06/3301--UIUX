@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id = "sentence"></p>
+    <script>
+        function makeSentence() {
+            const words1 = ["자상한","콧대 높은","자존심강한","눈이 높은","집착이 심한"];
+            const words2 = ["키가 큰","키가작은","덩치가좋은","빼빼마른","의문의"];
+            const words3 = ["우지","승관","디노","도겸","원우","정한","에스쿱스"];
+
+            const rand1 = Math.floor(Math.random() * words1.length)
+            const rand2 = Math.floor(Math.random() * words2.length)
+            const rand3 = Math.floor(Math.random() * words3.length)
+
+            let sentence = words1[rand1]+" "+words2[rand2]+ " "+words3[rand3];
+
+            const sentenceElement = document.getElementById("sentence");
+            sentenceElement.innerHTML = sentence;
+        }
+    </script>
+    
+</body>
+</html>
