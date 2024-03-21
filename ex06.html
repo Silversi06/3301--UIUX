@@ -26,6 +26,8 @@
             loadPlaylist();
         }
 
+        let keyData = "playlist";
+
         function handleAddButtonClick(e) {
             var songName = document.getElementById("songTextInput").value;
 
@@ -33,9 +35,9 @@
                 alert("곡명을 입력하세요");
             } else {
                 //localStorage에 넣기
-                var playlistArray = getStoreArray("playlist");
+                var playlistArray = getStoreArray(keyData);
                 playlistArray.push(songName);
-                localStorage.setItem("playlist", JSON.stringify(playlistArray));
+                localStorage.setItem(keyData, JSON.stringify(playlistArray));
 
                 //노래 리스트에도 추가
                 var ul = document.getElementById("playlist");
@@ -46,11 +48,25 @@
         }
 
         function loadPlaylist() {
+            let playlistArray = getStoreArray(keyData);    //배열값
+            console.log("데이터 : ",playlistArray);
 
+            //노래 리스트에도 추가
+            var ul = document.getElementById("playlist");
+            for(let i =0; i<playlistArray.length; i++){
+                var li = document.createElement("li");
+                li.innerHTML = playlistArray[i];
+                ul.appendChild(li);
+            }
         }
 
         function getStoreArray() {
-            var playlistArray = new Array();
+            var playlistArray = localStorage.getItem("playlist");
+            if(playlistArray == null || playlistArray ==""){
+                playlistArray = new Array();
+            }else{
+                playlistArray = JSON.parse(playlistArray);
+            }
             return playlistArray;
         }
     </script>
