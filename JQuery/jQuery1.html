@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function(){
-            alert("1");
-        })
-        $(function(){
-            alert("2");
-        })
-
-
-    </script>
+    
 </head>
 <body>
+
+
+    안녕하세요<br />
+    <div>반갑습니다</div>
     
 </body>
+
+<script>
+    $(document).ready(function(){
+        alert("1");
+    })
+    $(function(){
+        alert("2");
+    });
+    $("*").css("color", "blue");
+    $("div").css("color","red");
+    $("input[type='text']").val("값지정");
+
+</script>
 </html>
